@@ -9,8 +9,8 @@ try {
     const {term}=requestBody;
     const results=await axios.get(`https://itunes.apple.com/search?term=${term}`);
 const filteredResults = results.data.results
-  .filter((item:any) => 'collectionName' in item)
-  .map((item:any) => ({
+  .filter((item:String) => 'collectionName' in item)
+  .map((item:String) => ({
     trackViewUrl: item.trackViewUrl,
     artistName: item.artistName,
     trackName: item.trackName,
@@ -21,7 +21,7 @@ const newTrack= new Track({term, results:filteredResults});
         await newTrack.save();
         console.log('new track', newTrack);
         return NextResponse.json({success:true, results:filteredResults});
-}catch(error:any){
+}catch(error){
     console.log("oops, something went wrong",error);
-    return NextResponse.json({error:error.message},{status: 500});
+    return NextResponse.json({error},{status: 500});
 }}

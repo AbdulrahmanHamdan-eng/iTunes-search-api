@@ -1,15 +1,5 @@
 "use client"
 
-
-// const filteredResults = results.data.results
-//   .filter((item:any) => 'collectionName' in item)
-//   .map((item:any) => ({
-//     trackViewUrl: item.trackViewUrl,
-//     artistName: item.artistName,
-//     trackName: item.trackName,
-//     artworkUrl600: item.artworkUrl600 || item.artworkUrl100
-//   }));
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Search, Play, Calendar, User } from 'lucide-react';
@@ -43,7 +33,7 @@ export default function Home() {
 
  
 
-  const searchPodcasts = async (term:any) => {
+  const searchPodcasts = async (term:String) => {
     if (!term.trim()) return;
     
     setLoading(true);
@@ -61,20 +51,13 @@ console.log('results: from fronteeeeeeeee',  response.data.results);
     }
   };
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (term.trim()) {
       searchPodcasts(term);
     }
   };
-
-  const formatDate = (dateString:any) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    });
-  };
+ 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
