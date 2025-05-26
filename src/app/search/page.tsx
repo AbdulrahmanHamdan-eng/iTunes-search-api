@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Search, Play, Calendar, User } from 'lucide-react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { Search, Play} from 'lucide-react';
+ 
+import Image from 'next/image';
 
 export default function Home() {
     // const router = useRouter();
@@ -118,7 +118,7 @@ console.log('results: from fronteeeeeeeee',  response.data.results);
                       >
                         {/* Podcast Artwork */}
                         <div className="relative mb-4">
-                          <img
+                          <Image
                             src={podcast.artworkUrl600}
                             alt={podcast.collectionName}
                             className="w-full h-48 object-cover rounded-xl"
