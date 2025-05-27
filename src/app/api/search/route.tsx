@@ -3,14 +3,23 @@ import {connectToDatabase} from '@/db/dbConfig';
 import Track from "@/model/searchModel";
 import axios from "axios";
 connectToDatabase();
+
+interface PodcastItem {
+  collectionViewUrl: string;
+  trackViewUrl: string;
+  artworkUrl60: string;
+  artworkUrl100: string;
+  collectionPrice: number;
+  collectionName?: string; // Optional because you're checking for its existence
+}
 export async function POST(request:NextRequest){
 try {
     const requestBody=await request.json();
     const {term}=requestBody;
     const results=await axios.get(`https://itunes.apple.com/search?term=${term}`);
 const filteredResults = results.data.results
-  .filter((item:any) => 'collectionName' in item)
-  .map((item:string) => ({
+  .filter((item:PodcastItem) => 'collectionName' in item)
+  .map((item:PodcastItem) => ({
     trackViewUrl: item.trackViewUrl,
     artistName: item.artistName,
     trackName: item.trackName,
