@@ -30,15 +30,12 @@ const resultSchema=new mongoose.Schema({
 const trackSchema = new mongoose.Schema({
   term:{
     type:String,
-    required:true
   },
   results:{
     type:[resultSchema],
-    required:true,
   }
 
 }, {
-  timestamps: true
 });
 
 const Track= mongoose.model('Track', trackSchema);
