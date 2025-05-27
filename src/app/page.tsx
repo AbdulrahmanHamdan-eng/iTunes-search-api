@@ -103,7 +103,7 @@ console.log('results: from fronteeeeeeeee',  response.data.results);
               <>
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-2xl font-bold text-white">
-                    Top podcasts for {results.length} 
+                    Top podcasts for {term} 
                   </h2>
                 </div>
 
@@ -128,14 +128,7 @@ console.log('results: from fronteeeeeeeee',  response.data.results);
   }}
   unoptimized={true} // Required for external images
 />
-                          {/* <img
-                           
-                            src={podcast.artworkUrl600}
-                            alt={podcast.collectionName}
-                            className="w-full h-48 object-cover rounded-xl"
-                            onError={(e) => {
-                              // e.target.src = '/api/placeholder/300/300';
-                            }}
+                        
                           /> */}
                           <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                             <Play className="w-12 h-12 text-white" fill="currentColor" />
