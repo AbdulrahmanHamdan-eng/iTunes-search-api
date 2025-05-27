@@ -33,7 +33,7 @@ export default function Home() {
 
  
 
-  const searchPodcasts = async (term:String) => {
+  const searchPodcasts = async (term:string) => {
     if (!term.trim()) return;
     
     setLoading(true);
@@ -129,7 +129,7 @@ console.log('results: from fronteeeeeeeee',  response.data.results);
   unoptimized={true} // Required for external images
 />
                         
-                          /> */}
+                           
                           <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                             <Play className="w-12 h-12 text-white" fill="currentColor" />
                           </div>
