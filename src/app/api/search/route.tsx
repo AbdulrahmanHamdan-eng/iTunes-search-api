@@ -9,7 +9,9 @@ interface PodcastItem {
   trackViewUrl: string;
   artworkUrl60: string;
   artworkUrl100: string;
-  collectionPrice: number;
+  artworkUrl600:string;
+  artistName:string,
+  trackName:string
   collectionName?: string; // Optional because you're checking for its existence
 }
 export async function POST(request:NextRequest){
