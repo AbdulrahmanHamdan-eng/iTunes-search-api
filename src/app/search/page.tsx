@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Search, Play} from 'lucide-react';
  
 import Image from 'next/image';
+import { PodcastItem } from '../types/iTunesTypes';
 
 export default function Home() {
     // const router = useRouter();
@@ -110,7 +111,7 @@ console.log('results: from fronteeeeeeeee',  response.data.results);
                 {/* Scrollable Cards Container */}
                 <div className="overflow-x-auto pb-4">
                   <div className="flex space-x-6 min-w-max">
-                    {results.map((podcast, index) => (
+                    {results.map((podcast:PodcastItem, index) => (
                     <a href={podcast.trackViewUrl}   key={index} > 
                      <div
                         className="flex-shrink-0 w-80 bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl"
@@ -118,16 +119,16 @@ console.log('results: from fronteeeeeeeee',  response.data.results);
                         {/* Podcast Artwork */}
                         <div className="relative mb-4">
                           <Image
-  src={podcast.artworkUrl600 || '/placeholder.png'} // Fallback if undefined
-  alt={podcast.collectionName || 'Podcast cover'}
-  width={320} // Required
-  height={320} // Required
-  className="w-full h-48 object-cover rounded-xl"
-  onError={(e) => {
-    e.currentTarget.src = '/placeholder.png'; // Fallback on error
-  }}
-  unoptimized={true} // Required for external images
-/>
+                              src={podcast.artworkUrl600 } // Fallback if undefined
+                              alt= "No image found"
+                             width={320} // Required
+                            height={320} // Required
+                             className="w-full h-48 object-cover rounded-xl"
+  
+
+
+                     unoptimized={true} // Required for external images
+                         />
                         
                            
                           <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
@@ -159,14 +160,7 @@ console.log('results: from fronteeeeeeeee',  response.data.results);
                   </div>
                 </div>
 
-                {/* Scroll Indicator */}
-                {
-                  
-                  <div className="text-center mt-6">
-                  <p className="text-gray-400 text-sm">
-                    ← Swipe to see more podcasts →
-                  </p>
-                </div>}
+               
               </>
             ) : (
               !loading && (
