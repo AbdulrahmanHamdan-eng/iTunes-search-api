@@ -9,7 +9,7 @@ try {
     const {term}=requestBody;
     const results=await axios.get(`https://itunes.apple.com/search?term=${term}`);
 const filteredResults = results.data.results
-  .filter((item:string) => 'collectionName' in item)
+  .filter((item:any) => 'collectionName' in item)
   .map((item:string) => ({
     trackViewUrl: item.trackViewUrl,
     artistName: item.artistName,
